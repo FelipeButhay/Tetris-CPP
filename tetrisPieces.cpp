@@ -64,16 +64,10 @@ void Piece::rotate(BoardType& Board){
 }
 
 void Piece::fall(int time0){
-    // if(fastFalling){
-    //     posY += 0.30 + GetTime()/30000;
-    // } else {
-    //     posY += 0.01 + GetTime()/30000;
-    // }
-
     if(fastFalling){
-        posY += (300 + GetTime() - time0)/1000;
+        posY += 0.30 + (GetTime() - time0)/30000 < 0.5 ? 0.30 + (GetTime() - time0)/30000 : 0.5;
     } else {
-        posY += (300 + GetTime() - time0)/30000;
+        posY += 0.01 + (GetTime() - time0)/30000 < 0.5 ? 0.01 + (GetTime() - time0)/30000 : 0.5;
     }
 }
 
